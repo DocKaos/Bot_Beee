@@ -33,18 +33,6 @@ function onMessageHandler (target, context, msg, self) {
     const commandRegEx = new RegExp(/^!([a-zA-Z0-9]+)(?:\W+)?(.*)?/);
     // Remove whitespace from chat message
     const mainMsg = msg.trim();
-
-    // Check for greetings
-    if( greetings.includes(mainMsg.toLowerCase()) ) {
-        client.say(target, `${greetings[Math.floor(Math.random() * greetings.length)]} ${context.username}`);
-        return;
-    }
-    // Do we buzz?
-    if( matchWords(mainMsg, ["bee", "flower", "honey"]) ) {
-        client.say(target, `Buzz Buzz Baby!`);
-        return;
-    }
-
     // Look for !commands
     match = msg.match(commandRegEx)
     var command, argument = null;
@@ -52,6 +40,20 @@ function onMessageHandler (target, context, msg, self) {
         command = match[1];
         argument = match[2];
     }
+
+    if( ! command ) {
+        // Check for greetings
+        if( greetings.includes(mainMsg.toLowerCase()) ) {
+            client.say(target, `${greetings[Math.floor(Math.random() * greetings.length)]} ${context.username}`);
+            return;
+        }
+        // Do we buzz?
+        if( matchWords(mainMsg, ["bee", "flower", "honey"]) ) {
+            client.say(target, `Buzz Buzz Baby!`);
+            return;
+        }
+    }
+    
   
     // If the command is known, let's execute it
     if( command ) {
