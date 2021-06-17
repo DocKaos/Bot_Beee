@@ -1,0 +1,21 @@
+{
+  "name": "bot_beee",
+  "version": "1.0.0",
+  "description": "Twitch Bot",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "tmi.js": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/DocKaos/Bot_Beee"
+  },
+  "author": "Doc Kaos",
+  "license": "Apache-2.0"
+}
