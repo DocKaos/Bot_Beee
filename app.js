@@ -48,7 +48,7 @@ function onMessageHandler (target, context, msg, self) {
             return;
         }
         // Do we buzz?
-        if( matchWords(mainMsg, ["bee", "flower", "honey"]) ) {
+        if( matchWords(mainMsg, ["bee", "flower", "honey"]).length ) {
             client.say(target, `Buzz Buzz Baby!`);
             return;
         }
