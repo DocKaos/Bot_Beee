@@ -65,7 +65,7 @@ function onMessageHandler (target, context, msg, self) {
     // If the command is known, let's execute it
     if( command ) {
         if (command === 'commands') {
-            client.say(target, `!roll ##\n!8ball question`);
+            client.say(target, `!roll ##\r\n!8ball question`);
             return;
         }
         else if (command === 'roll') {
