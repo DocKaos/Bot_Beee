@@ -5,6 +5,8 @@ require('dotenv').config();
 const tmi = require('tmi.js');
 
 const greetings = ["hey", "hello", "sup", "hi"]
+const m8ball_answers = ["Not today.", "Unlikely.", "In your dreams.", "It's a possibility.", "Never.",
+                        "Outlook fuzzy.", "Definitely.", "Maybe.", "Fo'sho", "Yes.", "Nope.", "Hard to see."]
 
 // Set up the client
 const client = new tmi.Client({
@@ -52,6 +54,11 @@ function onMessageHandler (target, context, msg, self) {
             client.say(target, `Buzz Buzz Baby!`);
             return;
         }
+        // RNG
+        if( matchWords(mainMsg, ["RNG"]).length) {
+            client.say(target, `No Randoms, just Skillz ...`);
+            return;
+        }
     }
     
   
@@ -63,6 +70,13 @@ function onMessageHandler (target, context, msg, self) {
         const num = rollDice(sides);
         client.say(target, `You rolled a ${num}`);
         console.log(`* Executed ${command} command ${sides}: ${num}`);
+        } else if( command == '8ball') {
+            if(!argument) {
+                client.say(target, `You need to ask the Magic 8 Ball a question to get an answer.`);
+                return;
+            } 
+            client.say(target, `${argument} : ${m8ball_answers[Math.floor(Math.random() * m8ball_answers.length)]}`);
+            return;
         } else {
         console.log(`* Unknown command ${command}`);
         }
