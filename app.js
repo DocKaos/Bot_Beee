@@ -64,13 +64,17 @@ function onMessageHandler (target, context, msg, self) {
   
     // If the command is known, let's execute it
     if( command ) {
-        if (command === 'roll') {
-        var sides = Number(argument);
-        if( sides === NaN ) sides = 6;
-        const num = rollDice(sides);
-        client.say(target, `You rolled a ${num}`);
-        console.log(`* Executed ${command} command ${sides}: ${num}`);
-        } else if( command == '8ball') {
+        if (command === 'commands') {
+            client.say(target, `!roll ##\n!8ball question`);
+            return;
+        }
+        else if (command === 'roll') {
+            var sides = Number(argument);
+            if( sides === NaN ) sides = 6;
+            const num = rollDice(sides);
+            client.say(target, `You rolled a ${num}`);
+            console.log(`* Executed ${command} command ${sides}: ${num}`);
+        } else if( command === '8ball') {
             if(!argument) {
                 client.say(target, `You need to ask the Magic 8 Ball a question to get an answer.`);
                 return;
